@@ -9,7 +9,7 @@ public class registerPage {
 String baseURL = "http://automationpractice.com/index.php";
 	
 WebDriver driver;
-public registerPage() {
+public registerPage(WebDriver driver) {
 	this.driver = driver;
 }
 	

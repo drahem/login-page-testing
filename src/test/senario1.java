@@ -1,7 +1,14 @@
 package test;
 
+import java.sql.Driver;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -9,7 +16,7 @@ import pages.loginPage;
 import pages.loginPage;
 import pages.registerPage;
 
-public class senario1 {
+public class senario1{
 	
 	/*  senario 1 
 	   in this senario ther's an existing account 
@@ -19,25 +26,39 @@ public class senario1 {
 	 complete the buying process and confirm
 	 * */
 	
-	loginPage lp;
+	
 	String loginPageURL = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
+	String user = "user1@test.eg";
+	String pass = "password";
+	WebDriver driver;
+	loginPage lp;
+	registerPage rp;
+	
+	
+
 
 	@BeforeTest
 	public void setup(){
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
 	    driver.get(loginPageURL);
 	    }
 	
-	@Test(priority = 0)
+	@Test
 	public void test_login_func_correct() {
 		
+		// create login page object
+		lp = new loginPage(driver);
 		// login with valid cerdentials 
-		lp.loginExistingAccount("user1@test.eg", "password");
+		lp.loginExistingAccount(user, pass);
 		
 	}
 	
+	
+	
+	
+	/*
 	@Test(priority = 1)
 	public void buyProducts() {
 		// choose items and add them to shopping cart
@@ -48,7 +69,7 @@ public class senario1 {
 		
 		// confirm buying process 
 	}
-	
+	*/
 
 	
 
