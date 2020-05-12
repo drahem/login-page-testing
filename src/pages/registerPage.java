@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class registerPage {
 
@@ -40,18 +42,30 @@ public void setBirthDate(int day, int month, int year) {
 	driver.findElement(By.id("uniform-days")).sendKeys(String.valueOf(day));
 	
 	
-	String monthName = "//*[@id=\"months\"]/option["+month+"]";
+	//String monthName = "//*[@id=\"months\"]/option["+month+"]";
 	
-	driver.findElement(By.id("uniform-months")).click();
-	driver.findElement(By.xpath(monthName)).click();
+	WebElement element = driver.findElement(By.id("uniform-months"));
 	
+	//Create an object of Select class and pass drop down element as a parameter
+	Select select = new Select(element); 
+	select.selectByIndex(month);
+	
+	// driver.findElement(By.xpath(monthName)).click();
 	driver.findElement(By.id("uniform-years")).sendKeys(String.valueOf(year));
-
-	
-	
 }
 
-public void setAdress(String company, String adress, String city, String state, int postalCode) {}
+public void setAdress(String company, String address, String city, String state, int postalCode) {
+	driver.findElement(By.id("company")).sendKeys(company);
+	driver.findElement(By.id("address1")).sendKeys(address);
+	driver.findElement(By.id("city")).sendKeys(city);
+	// select state 
+	driver.findElement(By.id("uniform-id_state")).click();
+	WebElement statesList = driver.findElement(By.id("id_state"));
+	Select select = new Select(statesList); 
+	select.selectByVisibleText(state);
+	driver.findElement(By.id("postcode")).sendKeys(String.valueOf(postalCode));
+	
+}
 
 public void setPhone(int homePhone, int mobilePhone) {
 	driver.findElement(By.id("phone")).sendKeys(String.valueOf(homePhone));

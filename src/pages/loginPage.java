@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 public class loginPage {
 	
@@ -14,6 +15,8 @@ public class loginPage {
 	public loginPage(WebDriver driver) {
 		this.driver = driver;
 	}
+	
+	
 	
 	public void loginExistingAccount(String email, String password) {
 		
@@ -50,25 +53,12 @@ public class loginPage {
 			 // if size is 0, then element do not exist
 			 System.out.println("submit button do not exist.");
 			}
-		
-		// assert logging in successfully 
-		String expectedURL = "http://automationpractice.com/index.php?controller=my-account";
-		try {
-		Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
-		}
-		catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("login failed");
-			e.printStackTrace();
-		}
 	}
 	
 	public void createNewAccount(String email) {
 		// enter a new email and press create an account button to start creating a new account 
 		driver.findElement(By.id("email_create")).sendKeys(email);
 		driver.findElement(By.id("SubmitCreate")).click();
-		
-		// assert going to the register page succesfully 
 	}
 	
 
