@@ -3,8 +3,6 @@ package test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -12,9 +10,6 @@ import org.testng.annotations.Test;
 
 import pages.MyAccountPage;
 import pages.loginPage;
-import pages.loginPage;
-import pages.registerPage;
-import pages.MyAccountPage;
 
 public class testExistingUserLogin{
 	
@@ -31,7 +26,6 @@ public class testExistingUserLogin{
 	String pass = "password";
 	WebDriver driver;
 	loginPage lp;
-	registerPage rp;
 	MyAccountPage myacc;
 	
 	
