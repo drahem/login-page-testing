@@ -17,11 +17,11 @@ public registerPage(WebDriver driver) {
 	
 public void chooseTitle(String title) {
 	if(title == "mr") {
-		driver.findElement(By.xpath("//*[@id=\"account-creation_form\"]/div[1]/div[1]/div[1]/label")).click();
+		driver.findElement(By.id("id_gender1")).click();
 	}
 	else if(title == "mrs") {
-		driver.findElement(By.xpath("//*[@id=\"account-creation_form\"]/div[1]/div[1]/div[2]/label")).click();
-			
+		driver.findElement(By.xpath("//*[@id=\"uniform-id_gender2\"]")).click();
+		//*[@id="uniform-id_gender2"]
 	}
 	else {
 			System.out.println("worng title choice...");
@@ -29,7 +29,8 @@ public void chooseTitle(String title) {
 }
 
 public void setName(String firstName, String lastName) {
-	driver.findElement(By.id("customer_firstname")).sendKeys(firstName);
+	//driver.findElement(By.id("customer_firstname")).sendKeys(firstName);
+	driver.findElement(By.cssSelector("#customer_firstname")).sendKeys(firstName);
 	driver.findElement(By.id("customer_lastname")).sendKeys(lastName);
 }
 
@@ -39,9 +40,9 @@ public void setEmailandPassword(String email, String password) {
 }
 
 public void setBirthDate(int day, int month, int year) {
+
 	driver.findElement(By.id("uniform-days")).sendKeys(String.valueOf(day));
-	
-	
+
 	//String monthName = "//*[@id=\"months\"]/option["+month+"]";
 	
 	WebElement element = driver.findElement(By.id("uniform-months"));
@@ -71,6 +72,5 @@ public void setPhone(int homePhone, int mobilePhone) {
 	driver.findElement(By.id("phone")).sendKeys(String.valueOf(homePhone));
 	driver.findElement(By.id("phone_mobile")).sendKeys(String.valueOf(mobilePhone));
 }
-
 
 }
