@@ -7,7 +7,9 @@ build with : java, selenium webdriver, TestNG framework.
 * This project based on page object model technique,where each page on website has a corresponding class that contains all its elements and functions. so, this class can be used to perform and action on this page.
 
 ## what does this framework do ?
+
 it's an automation for this website http://automationpractice.com/
+
 1- login for this website with an existing account
 2- assert the login has done successfully 
 3- open women category and add a product to shopping cart
